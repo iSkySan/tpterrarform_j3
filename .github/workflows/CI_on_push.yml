@@ -28,12 +28,11 @@ jobs:
           python-version: latest
       
       - name: install azure cli
-        uses: pip install azure-cli
-        with:
-          version: latest
+        run: pip install azure-cli
+
 
       - name: azure login
-        uses: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
+        run: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
       
       - name: terraform init,validate,plan
-        uses: terraform init && terraform validate && terraform plan
+        run: terraform init && terraform validate && terraform plan
