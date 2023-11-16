@@ -36,6 +36,7 @@ jobs:
         uses: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
       
       - name: terraform init,validate,plan
-        run: terraform init && terraform validate && terraform plan
+        uses: terraform init && terraform validate && terraform plan
+
 
       
