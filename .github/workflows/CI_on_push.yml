@@ -37,6 +37,3 @@ jobs:
       
       - name: terraform init,validate,plan
         uses: terraform init && terraform validate && terraform plan
-
-
-      
