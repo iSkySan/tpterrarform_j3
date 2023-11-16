@@ -33,9 +33,7 @@ jobs:
           az upgrade  --yes
 
       - name: azure login
-        run: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
+        run: az login  -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
       
       - name: terraform init,validate,plan
         run: terraform init && terraform validate && terraform plan
-
-        
