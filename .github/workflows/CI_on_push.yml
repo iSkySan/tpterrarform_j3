@@ -28,8 +28,9 @@ jobs:
           sudo apt-get install -y python3 python3-pip
       
       - name: install azure cli
-        run: pip install azure-cli
-
+        run: |
+          pip install azure-cli
+          az upgrade  --yes
 
       - name: azure login
         run: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
