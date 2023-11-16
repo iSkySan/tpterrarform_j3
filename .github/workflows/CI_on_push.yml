@@ -32,7 +32,7 @@ jobs:
 
 
       - name: azure login
-        run: az login --user ${{ secrets.AZURE_USERNAME }} --password ${{ secrets.AZURE_PASSWORD }}
+        run: az login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
       
       - name: terraform init,validate,plan
         run: terraform init && terraform validate && terraform plan
