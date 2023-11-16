@@ -36,4 +36,16 @@ jobs:
         run: az login  -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }} --tenant ${{ secrets.AZURE_TENANT_ID }}
       
       - name: terraform init,validate,plan
-        run: terraform init && terraform validate && terraform plan
+        run: |
+          terraform init 
+          terraform validate
+          terraform plan
+
+      - name: validation
+        uses: trstringer/manual-approval@v1
+        with:
+          github-token: ${{ secrets.GIT_TOKEN }}
+          approvers: trstringer
+
+      - name: terraform apply
+        run: terraform apply -auto-approve
